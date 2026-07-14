@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聯絡我們 Contact ｜ 睿嶼文化 RUIYU STUDIO</title>
+<meta name="description" content="聯絡睿嶼文化 ── 咖啡批發、禮品客製、異業合作，歡迎與我們聊聊。Email：hello.ruiyustudio@gmail.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200;300;400;500&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header id="hd">
+  <div class="nav">
+    <a href="index.html" class="brand">睿嶼文化<small>RUIYU STUDIO</small></a>
+    <nav class="menu" id="menu">
+      <a href="about.html">關於睿嶼</a>
+      <a href="soul.html">品牌靈魂</a>
+      <a href="services.html">服務項目</a>
+      <a href="journal.html">生活美學</a>
+      <a href="contact.html" class="active">聯絡我們</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="選單"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="banner">
+  <div class="banner-bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="wrap">
+    <span class="eyebrow">聯絡我們 Contact</span>
+    <h1 class="serif">期待與你的下一次相遇</h1>
+    <p>無論是咖啡批發、禮品客製或異業合作，都歡迎與我們聊聊。</p>
+  </div>
+</section>
+
+<section class="contact-sec">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3 class="serif">讓我們一起，<br>把美好慢慢釀成日常。</h3>
+        <div class="row">
+          <span class="ic">✉</span>
+          <div class="t"><small>Email</small><a href="mailto:hello.ruiyustudio@gmail.com">hello.ruiyustudio@gmail.com</a></div>
+        </div>
+        <div class="row">
+          <span class="ic">◷</span>
+          <div class="t"><small>回覆時間</small><span>我們會於 2 個工作日內親自回覆</span></div>
+        </div>
+        <div class="row">
+          <span class="ic">❋</span>
+          <div class="t"><small>合作洽詢</small><span>咖啡批發 · 禮品客製 · 異業合作</span></div>
+        </div>
+      </div>
+      <form class="reveal" id="contactForm" novalidate>
+        <div class="f2">
+          <div class="field">
+            <label for="name">姓名 Name</label>
+            <input type="text" id="name" name="name" placeholder="您的稱呼" maxlength="60" required>
+          </div>
+          <div class="field">
+            <label for="phone">聯絡電話 Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="09xx-xxx-xxx" maxlength="40">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" maxlength="120" required>
+        </div>
+        <div class="field">
+          <label for="topic">詢問類別 Topic</label>
+          <select id="topic" name="topic">
+            <option value="咖啡批發">咖啡批發</option>
+            <option value="禮品客製">禮品客製</option>
+            <option value="異業合作">異業合作</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">訊息內容 Message</label>
+          <textarea id="message" name="message" placeholder="想與睿嶼分享的想法…" maxlength="3000" required></textarea>
+        </div>
+        <div class="form-msg" id="formMsg"></div>
+        <div>
+          <button type="submit" class="btn btn-ink">送出訊息 →</button>
+          <p class="form-note">送出即表示同意睿嶼文化與您聯繫，我們珍惜每一次的相遇。</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="serif">睿嶼文化 RUIYU STUDIO</span>
+        <p>將時間虛度在美好的事物上。</p>
+      </div>
+      <div class="foot-col">
+        <h4>快速連結</h4>
+        <a href="about.html">關於睿嶼</a>
+        <a href="soul.html">品牌靈魂</a>
+        <a href="services.html">服務項目</a>
+        <a href="journal.html">生活美學</a>
+        <a href="contact.html">聯絡我們</a>
+      </div>
+      <div class="foot-col">
+        <h4>聯絡 · 社群</h4>
+        <a href="mailto:hello.ruiyustudio@gmail.com">hello.ruiyustudio@gmail.com</a>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram" title="Instagram">IG</a>
+          <a href="#" aria-label="Facebook" title="Facebook">f</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 RUIYU STUDIO. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script src="assets/contact.js"></script>
+</body>
+</html>
