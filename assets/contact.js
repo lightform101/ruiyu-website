@@ -1,9 +1,10 @@
 /* 睿嶼 — 聯絡表單送出（POST → 後端 /api/contact）*/
 (function () {
   // ── 設定 ──────────────────────────────────────────────
-  // 若官網與後端同一網域部署，維持空字串（同源 /api/contact）。
-  // 若官網為靜態託管、後端在別的網域，改成後端網址，例如：
-  //   const API_BASE = 'https://api.ruiyustudio.com';
+  // 填入「睿嶼 Contact API」的公開網址（部署在 Zeabur 的獨立後端）。
+  // 部署後把下面這行改成該服務網址，例如：
+  //   const API_BASE = 'https://ruiyu-api.zeabur.app';
+  // 本機測試後端時可用 'http://localhost:3000'。
   const API_BASE = '';
   const ENDPOINT = API_BASE + '/api/contact';
 
