@@ -1,5 +1,6 @@
-/* 睿嶼 — 聯絡表單送出（POST → 後端 /api/contact）*/
-(function () {
+/* 睿嶼 — 聯絡表單送出（由 cms.js 在渲染完 contact 區塊後呼叫 window.initContact）
+   POST → 睿嶼 Contact API 的 /api/contact。 */
+window.initContact = function initContact() {
   // ── 設定 ──────────────────────────────────────────────
   // 填入「睿嶼 Contact API」的公開網址（部署在 Zeabur 的獨立後端）。
   // 部署後把下面這行改成該服務網址，例如：
@@ -17,7 +18,6 @@
     msg.innerHTML = text;
     msg.className = 'form-msg show ' + type;
   };
-
   const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 
   form.addEventListener('submit', async (e) => {
@@ -26,7 +26,6 @@
     const email = form.email.value.trim();
     const message = form.message.value.trim();
 
-    // 前端基本驗證
     if (!name || !email || !message) {
       return show('請填寫姓名、Email 與訊息內容，我們才能好好回覆你 ☺', 'err');
     }
@@ -67,4 +66,4 @@
       btn.textContent = originalText;
     }
   });
-})();
+};

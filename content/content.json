@@ -1,0 +1,261 @@
+{
+  "settings": {
+    "brand_zh": "睿嶼文化",
+    "brand_en": "RUIYU STUDIO",
+    "theme": {
+      "oat": "#f5f1e8",
+      "paper": "#faf8f2",
+      "card": "#fffdf8",
+      "latte": "#b89b7a",
+      "latte_d": "#9c7f5f",
+      "charcoal": "#38332e",
+      "ink": "#4a443d",
+      "gray": "#9c948a",
+      "line": "#e7e0d3"
+    },
+    "nav": [
+      { "label": "關於睿嶼", "href": "about.html", "slug": "about" },
+      { "label": "品牌靈魂", "href": "soul.html", "slug": "soul" },
+      { "label": "服務項目", "href": "services.html", "slug": "services" },
+      { "label": "生活美學", "href": "journal.html", "slug": "journal" },
+      { "label": "聯絡我們", "href": "contact.html", "slug": "contact" }
+    ],
+    "footer": {
+      "tagline": "將時間虛度在美好的事物上。",
+      "email": "hello.ruiyustudio@gmail.com",
+      "socials": [
+        { "label": "IG", "url": "#" },
+        { "label": "f", "url": "#" }
+      ],
+      "copyright": "© 2026 RUIYU STUDIO. All rights reserved."
+    }
+  },
+
+  "flavor_quiz": {
+    "kicker": "Flavor Quiz · 專屬風味測驗",
+    "title": "此刻的你，適合哪一種風味？",
+    "questions": [
+      { "q": "週末的早晨，你更傾向如何度過？", "opts": [
+        { "t": "窩在窗邊，看陽光慢慢移動", "s": "soft" },
+        { "t": "到市場走走，尋找新鮮的靈感", "s": "bright" },
+        { "t": "翻一本書，什麼都不做也好", "s": "deep" },
+        { "t": "約朋友，聊到下午茶時分", "s": "sweet" }
+      ] },
+      { "q": "哪一種氣味，最能讓你安定下來？", "opts": [
+        { "t": "剛烘好的堅果與可可", "s": "deep" },
+        { "t": "雨後的青草與柑橘", "s": "bright" },
+        { "t": "溫熱的奶香與焦糖", "s": "sweet" },
+        { "t": "木質與微微的花香", "s": "soft" }
+      ] },
+      { "q": "此刻的心情，比較接近哪一種？", "opts": [
+        { "t": "想被溫柔地包覆著", "s": "sweet" },
+        { "t": "清醒、想開始些什麼", "s": "bright" },
+        { "t": "平靜，想留白一會兒", "s": "soft" },
+        { "t": "內斂，想沉澱思緒", "s": "deep" }
+      ] },
+      { "q": "如果生活是一種節奏，你想要的是？", "opts": [
+        { "t": "緩慢而綿長，像一段長曝", "s": "soft" },
+        { "t": "明亮而輕盈，像清晨的風", "s": "bright" },
+        { "t": "醇厚而深沉，像午後的靜", "s": "deep" },
+        { "t": "甜潤而圓滿，像溫暖的擁抱", "s": "sweet" }
+      ] }
+    ],
+    "order": ["bright", "soft", "deep", "sweet"],
+    "results": {
+      "bright": { "emoji": "🍊", "title": "明亮日曬 · 淺焙耶加雪菲", "note": "像清晨第一道光的酸甜。", "desc": "柑橘與花香在杯中舒展，明亮而輕盈。適合此刻想重新開始、渴望被喚醒的你 ── 一杯替生活按下 refresh 的風味。" },
+      "soft":   { "emoji": "🌿", "title": "溫潤留白 · 水洗藝伎", "note": "像午後窗邊的一段留白。", "desc": "細緻的花香與絲滑口感，安靜而優雅。獻給喜歡放慢、懂得欣賞留白的你 ── 讓時間，慢慢地流過。" },
+      "deep":   { "emoji": "🌰", "title": "沉靜醇厚 · 中深焙曼特寧", "note": "像一段可以獨處的深夜。", "desc": "堅果、可可與低酸的厚實，沉穩而內斂。陪伴喜歡沉澱思緒的你 ── 在濃郁裡，找到自己的重量。" },
+      "sweet":  { "emoji": "🍮", "title": "甜潤圓滿 · 焦糖拿鐵", "note": "像一個溫暖的擁抱。", "desc": "奶香與焦糖交融的圓潤甜感，溫柔而療癒。給想被溫柔包覆的你 ── 一杯把整天都變柔軟的風味。" }
+    }
+  },
+
+  "services": [
+    {
+      "icon": "☕", "title_zh": "咖啡批發", "title_en": "Coffee Wholesale",
+      "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1000&q=80",
+      "description": "針對商業空間、餐廳提供高品質的咖啡豆批發與風味技術指導，讓專業的風味，成為你品牌體驗的一部分。",
+      "bullets": ["精選單品與客製化配方豆", "沖煮參數與風味技術指導", "穩定供豆與烘焙品管"]
+    },
+    {
+      "icon": "🎁", "title_zh": "質感禮品", "title_en": "Gifts",
+      "image": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=1000&q=80",
+      "description": "為企業客製化或節慶準備的專屬咖啡與選品禮盒，以溫潤的細節，替你傳遞每一份溫暖心意。",
+      "bullets": ["企業客製禮盒與品牌聯名", "節慶限定咖啡選品組合", "包裝設計與卡片訊息客製"]
+    },
+    {
+      "icon": "🪴", "title_zh": "生活選品", "title_en": "Lifestyle Selections",
+      "image": "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=1000&q=80",
+      "description": "延續睿嶼的美學品味，精選各式讓生活更美好的日常器物，讓質感自然地流動於居家與工作之間。",
+      "bullets": ["手感器物與沖煮道具", "空間佈置與生活小物", "不定期上架的季節選品"]
+    }
+  ],
+
+  "articles": [
+    { "category": "咖啡日常", "title": "一杯手沖的節奏：從水溫到心境", "excerpt": "沖煮不只是技術，更是一段與自己對話的儀式。我們談談如何讓每一次注水，都成為放慢的練習。", "cover": "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=800&q=80", "date": "2026 · 06", "href": "#" },
+    { "category": "空間與美學", "title": "器物的溫度：讓餐桌成為風景", "excerpt": "一只手感陶杯、一方亞麻桌巾。分享如何以選品堆疊出空間的肌理與安定的氛圍。", "cover": "https://images.unsplash.com/photo-1493957988430-a5f2e15f39a3?auto=format&fit=crop&w=800&q=80", "date": "2026 · 05", "href": "#" },
+    { "category": "睿嶼記事", "title": "與品牌相遇：一場關於風味的合作", "excerpt": "記錄睿嶼與夥伴品牌的合作企劃，如何把一杯咖啡，變成一段被記得的體驗。", "cover": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80", "date": "2026 · 04", "href": "#" },
+    { "category": "咖啡日常", "title": "認識產地：一顆豆子的旅程", "excerpt": "從海拔、處理法到烘焙，一支咖啡的風味是如何被決定的？帶你讀懂杯中的風土。", "cover": "https://images.unsplash.com/photo-1500423079914-b65af272b8db?auto=format&fit=crop&w=800&q=80", "date": "2026 · 03", "href": "#" },
+    { "category": "空間與美學", "title": "留白的練習：為生活騰出呼吸", "excerpt": "質感不在於堆疊，而在於取捨。聊聊如何用「少」，讓空間與心，都更自在。", "cover": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80", "date": "2026 · 02", "href": "#" },
+    { "category": "睿嶼記事", "title": "關於睿嶼的名字與初心", "excerpt": "睿嶼從何而來？分享品牌誕生的那一段思索，以及我們想留給生活的溫度。", "cover": "https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=800&q=80", "date": "2026 · 01", "href": "#" }
+  ],
+
+  "pages": {
+    "home": {
+      "title": "睿嶼文化 RUIYU STUDIO ｜ 將時間虛度在美好的事物上",
+      "description": "睿嶼文化 RUIYU STUDIO ── 以咖啡為媒介，將生活美學、設計思維與細膩品味融入日常。提供咖啡批發、質感禮品、生活選品。",
+      "blocks": [
+        { "type": "hero",
+          "eyebrow": "RUIYU STUDIO · 慢活生活美學",
+          "heading": "不知道我們將在那樣的意境裡漫汗多少晨昏，\n但生命應該是虛度在美好的事物上，\n因為那樣才值得。",
+          "body": "我們邀請你一同在這裡放慢步調，將時間「虛度」在每一杯咖啡、每一抹空間的肌理、以及每一個當下的感官觸動裡。因為在睿嶼，那些看似虛度的時光，才是生活最真實的飽滿。",
+          "bg_image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000&q=80",
+          "buttons": [
+            { "label": "探索品牌靈魂", "href": "soul.html", "style": "ghost" },
+            { "label": "我們的服務", "href": "services.html", "style": "primary" }
+          ]
+        },
+        { "type": "about_split", "bg": "paper",
+          "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80",
+          "tag_text": "將時間虛度在\n美好的事物上。",
+          "eyebrow": "關於睿嶼 About Us",
+          "heading": "在快速變動的世界裡，\n值得留下的是能讓人停留片刻的體驗。",
+          "paragraphs": [
+            "睿嶼文化以咖啡為媒介，將生活美學、設計思維與細膩品味融入日常，讓每一次相遇、每一份分享，都成為生活的一部分。",
+            "我們重視的不只是風味與品質，更是在每一次交流中，創造真實、溫暖且富有質感的體驗。"
+          ],
+          "button": { "label": "認識睿嶼 →", "href": "about.html", "style": "line" }
+        },
+        { "type": "intro_grid",
+          "eyebrow": "探索睿嶼 Explore",
+          "heading": "從一杯咖啡開始的生活提案",
+          "cards": [
+            { "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=900&q=80", "title": "服務項目", "text": "咖啡批發、質感禮品與生活選品，將質感融入你的每一個日常場景。", "more": "查看服務 →", "href": "services.html" },
+            { "image": "https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=900&q=80", "title": "品牌靈魂", "text": "以咖啡為溫潤的媒介，透過專屬風味測驗，找到最貼近此刻心境的一杯。", "more": "開始測驗 →", "href": "soul.html" },
+            { "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80", "title": "生活美學", "text": "那些值得慢下來的日常記事 ── 咖啡日常、空間與美學、睿嶼記事。", "more": "閱讀文章 →", "href": "journal.html" }
+          ]
+        },
+        { "type": "cta",
+          "eyebrow": "Let's talk",
+          "heading": "讓我們一起，把美好的事物慢慢釀成日常",
+          "text": "無論是咖啡批發、禮品客製或異業合作，都歡迎與我們聊聊。",
+          "buttons": [ { "label": "聯絡睿嶼 →", "href": "contact.html", "style": "primary" } ]
+        }
+      ]
+    },
+
+    "about": {
+      "title": "關於睿嶼 About ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "睿嶼文化以咖啡為媒介，將生活美學、設計思維與細膩品味融入日常，創造真實、溫暖且富有質感的體驗。",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "關於睿嶼 About Us",
+          "heading": "值得留下的，是能讓人停留片刻的體驗",
+          "subtext": "在快速變動的世界裡，我們相信慢下來的每一刻，都值得。"
+        },
+        { "type": "about_split", "bg": "paper",
+          "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80",
+          "tag_text": "將時間虛度在\n美好的事物上。",
+          "eyebrow": "品牌理念 Our Belief",
+          "heading": "以咖啡為媒介，\n把質感融入日常。",
+          "paragraphs": [
+            "睿嶼文化以咖啡為媒介，將生活美學、設計思維與細膩品味融入日常，讓每一次相遇、每一份分享，都成為生活的一部分。",
+            "我們重視的不只是風味與品質，更是在每一次交流中，創造真實、溫暖且富有質感的體驗。"
+          ],
+          "quote": "真正值得留下的，\n是那些能讓人停留片刻的溫度。"
+        },
+        { "type": "values",
+          "eyebrow": "我們在意的事 What We Value",
+          "heading": "在每一個細節裡，慢慢釀成溫度",
+          "items": [
+            { "icon": "☕", "title": "風味與品質", "text": "從產地到杯中，嚴選每一支豆子，讓專業的風味，成為日常裡最安定的存在。" },
+            { "icon": "✎", "title": "美學與設計", "text": "以設計思維梳理每一次體驗，讓空間、器物與包裝，都流露一致的質感語彙。" },
+            { "icon": "❋", "title": "相遇與溫度", "text": "我們相信人與人之間的細膩交流，才是品牌最真實、最值得被記得的部分。" }
+          ]
+        },
+        { "type": "cta",
+          "heading": "想更靠近睿嶼一點嗎？",
+          "text": "從一次專屬風味測驗，或一封簡單的來信開始。",
+          "buttons": [
+            { "label": "專屬風味測驗", "href": "soul.html", "style": "line" },
+            { "label": "聯絡我們", "href": "contact.html", "style": "primary" }
+          ]
+        }
+      ]
+    },
+
+    "soul": {
+      "title": "品牌靈魂 Brand Soul ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "以咖啡為溫潤的媒介，透過專屬風味測驗，找到最貼近此刻心境的一杯風味。",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "定調品牌靈魂 Brand Soul",
+          "heading": "以咖啡為溫潤的媒介",
+          "subtext": "將時間虛度在美好的事物上，讓每一次相遇，都沉澱為富有質感的深刻記憶。"
+        },
+        { "type": "soul_lead",
+          "text": "透過客製化風味與美學，串聯起人與人、品牌與顧客之間的細膩日常，讓每一次相遇，都沉澱為富有質感的深刻記憶。"
+        },
+        { "type": "quiz" }
+      ]
+    },
+
+    "services": {
+      "title": "服務項目 Services ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "睿嶼文化服務項目：咖啡批發、質感禮品、生活選品，將質感融入你的每一個日常場景。",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "我們的服務 Services",
+          "heading": "將質感，融入你的每一個日常場景",
+          "subtext": "從商業空間到節慶心意，睿嶼以咖啡與美學，陪伴每一次相遇。"
+        },
+        { "type": "services_detail" },
+        { "type": "cta",
+          "eyebrow": "Let's talk",
+          "heading": "需要為你的品牌或空間，客製一份提案嗎？",
+          "text": "告訴我們你的需求，讓睿嶼替你把細節慢慢釀好。",
+          "buttons": [ { "label": "洽詢合作 →", "href": "contact.html", "style": "primary" } ]
+        }
+      ]
+    },
+
+    "journal": {
+      "title": "生活美學 Journal ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "睿嶼生活美學誌 ── 咖啡日常、空間與美學、睿嶼記事，那些值得慢下來的日常。",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "生活美學 Journal",
+          "heading": "那些值得慢下來的日常記事",
+          "subtext": "咖啡日常、空間與美學、睿嶼記事 ── 記錄生活裡的溫度與靈感。"
+        },
+        { "type": "journal_list" }
+      ]
+    },
+
+    "contact": {
+      "title": "聯絡我們 Contact ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "聯絡睿嶼文化 ── 咖啡批發、禮品客製、異業合作，歡迎與我們聊聊。Email：hello.ruiyustudio@gmail.com",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "聯絡我們 Contact",
+          "heading": "期待與你的下一次相遇",
+          "subtext": "無論是咖啡批發、禮品客製或異業合作，都歡迎與我們聊聊。"
+        },
+        { "type": "contact",
+          "info_heading": "讓我們一起，\n把美好慢慢釀成日常。",
+          "info": [
+            { "icon": "✉", "label": "Email", "value": "hello.ruiyustudio@gmail.com", "href": "mailto:hello.ruiyustudio@gmail.com" },
+            { "icon": "◷", "label": "回覆時間", "value": "我們會於 2 個工作日內親自回覆" },
+            { "icon": "❋", "label": "合作洽詢", "value": "咖啡批發 · 禮品客製 · 異業合作" }
+          ],
+          "topics": ["咖啡批發", "禮品客製", "異業合作", "其他"],
+          "form_note": "送出即表示同意睿嶼文化與您聯繫，我們珍惜每一次的相遇。"
+        }
+      ]
+    }
+  }
+}
