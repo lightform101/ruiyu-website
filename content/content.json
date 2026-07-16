@@ -17,7 +17,7 @@
       { "label": "關於睿嶼", "href": "about.html", "slug": "about" },
       { "label": "品牌靈魂", "href": "soul.html", "slug": "soul" },
       { "label": "服務項目", "href": "services.html", "slug": "services" },
-      { "label": "選物", "href": "shop.html", "slug": "shop" },
+      { "label": "生活選品", "href": "shop.html", "slug": "shop" },
       { "label": "生活美學", "href": "journal.html", "slug": "journal" },
       { "label": "聯絡我們", "href": "contact.html", "slug": "contact" }
     ],
