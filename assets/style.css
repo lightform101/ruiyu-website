@@ -226,6 +226,52 @@ footer{background:#2c2823;color:#a89f92;padding:70px 0 40px}
 .foot-social a:hover{background:var(--latte);border-color:var(--latte);color:#fff}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:26px;text-align:center;font-size:.78rem;letter-spacing:.06em;color:#8a8175}
 
+/* ---------- 選物商店 Products ---------- */
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.product-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.4s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(56,51,46,.1)}
+.product-card .ph{width:100%;height:0;padding-bottom:100%;background:center/cover var(--paper)}
+.product-card .pbody{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.product-card .pcat{font-size:.7rem;letter-spacing:.16em;color:var(--latte-d);text-transform:uppercase}
+.product-card h3{font-size:1.15rem;margin:8px 0 10px}
+.product-card p{color:var(--gray);font-size:.85rem;line-height:1.9;margin-bottom:16px}
+.product-card .pfoot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.product-card .price{font-family:'Noto Serif TC',serif;font-size:1.2rem;color:var(--charcoal)}
+.empty-shop{text-align:center;color:var(--gray);padding:40px 0}
+
+/* ---------- 購物車 Cart ---------- */
+.cart-fab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--charcoal);color:#fff;border:0;border-radius:50px;
+  padding:14px 20px;display:none;align-items:center;gap:8px;box-shadow:0 12px 30px rgba(56,51,46,.28);font-size:.9rem;font-family:inherit}
+.cart-fab.show{display:inline-flex}
+.cart-fab .count{background:var(--latte);border-radius:50px;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:.74rem;padding:0 6px}
+.cart-mask{position:fixed;inset:0;background:rgba(40,36,30,.4);z-index:70;opacity:0;pointer-events:none;transition:.3s}
+.cart-mask.open{opacity:1;pointer-events:auto}
+.cart-drawer{position:fixed;top:0;right:0;height:100vh;width:90%;max-width:400px;background:var(--paper);z-index:80;
+  transform:translateX(100%);transition:.35s;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.18)}
+.cart-drawer.open{transform:none}
+.cart-hd{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.cart-hd h3{font-size:1.1rem}
+.cart-hd .x{background:none;border:0;font-size:1.4rem;color:var(--gray);cursor:pointer;line-height:1}
+.cart-items{flex:1;overflow-y:auto;padding:14px 22px}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-item .ci-img{width:64px;height:64px;border-radius:4px;background:center/cover var(--card);flex:0 0 auto}
+.cart-item .ci-main{flex:1;min-width:0}
+.cart-item .ci-name{font-size:.92rem;color:var(--charcoal)}
+.cart-item .ci-price{font-size:.82rem;color:var(--gray);margin-top:2px}
+.cart-item .ci-ctrl{display:flex;align-items:center;gap:10px;margin-top:8px}
+.qbtn{width:26px;height:26px;border:1px solid var(--line);background:var(--card);border-radius:5px;font-size:1rem;line-height:1;color:var(--ink);cursor:pointer}
+.cart-item .ci-qty{min-width:20px;text-align:center;font-size:.9rem}
+.cart-item .ci-del{margin-left:auto;background:none;border:0;color:var(--gray);font-size:.78rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.cart-empty{text-align:center;color:var(--gray);padding:50px 0;font-size:.9rem}
+.cart-ft{border-top:1px solid var(--line);padding:18px 22px 22px}
+.cart-ft .sum{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.cart-ft .sum b{font-family:'Noto Serif TC',serif;font-size:1.35rem;color:var(--charcoal)}
+.cart-ft .btn{width:100%;text-align:center}
+.cart-note{font-size:.76rem;color:var(--gray);text-align:center;margin-top:10px;line-height:1.7}
+
+@media(max-width:900px){.products-grid{grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:560px){.products-grid{grid-template-columns:1fr}}
+
 /* ---------- Reveal animation ---------- */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}

@@ -17,6 +17,7 @@
       { "label": "關於睿嶼", "href": "about.html", "slug": "about" },
       { "label": "品牌靈魂", "href": "soul.html", "slug": "soul" },
       { "label": "服務項目", "href": "services.html", "slug": "services" },
+      { "label": "選物", "href": "shop.html", "slug": "shop" },
       { "label": "生活美學", "href": "journal.html", "slug": "journal" },
       { "label": "聯絡我們", "href": "contact.html", "slug": "contact" }
     ],
@@ -81,13 +82,13 @@
       "image": "https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=1000&q=80",
       "description": "為企業客製化或節慶準備的專屬咖啡與選品禮盒，以溫潤的細節，替你傳遞每一份溫暖心意。",
       "bullets": ["企業客製禮盒與品牌聯名", "節慶限定咖啡選品組合", "包裝設計與卡片訊息客製"]
-    },
-    {
-      "icon": "🪴", "title_zh": "生活選品", "title_en": "Lifestyle Selections",
-      "image": "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=1000&q=80",
-      "description": "延續睿嶼的美學品味，精選各式讓生活更美好的日常器物，讓質感自然地流動於居家與工作之間。",
-      "bullets": ["手感器物與沖煮道具", "空間佈置與生活小物", "不定期上架的季節選品"]
     }
+  ],
+
+  "products": [
+    { "name": "手沖濾杯組", "price": 880, "category": "沖煮道具", "description": "陶瓷手沖濾杯，簡約俐落的線條，讓每一次注水都成為儀式。", "image": "https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&fit=crop&w=800&q=80" },
+    { "name": "手感陶瓷杯", "price": 520, "category": "器物", "description": "職人手作的溫潤陶杯，握在掌心剛好的重量與溫度。", "image": "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=800&q=80" },
+    { "name": "亞麻桌巾", "price": 680, "category": "生活雜貨", "description": "水洗亞麻，自然的褶皺與質地，替餐桌鋪上一層安定。", "image": "https://images.unsplash.com/photo-1493957988430-a5f2e15f39a3?auto=format&fit=crop&w=800&q=80" }
   ],
 
   "articles": [
@@ -218,6 +219,20 @@
           "text": "告訴我們你的需求，讓睿嶼替你把細節慢慢釀好。",
           "buttons": [ { "label": "洽詢合作 →", "href": "contact.html", "style": "primary" } ]
         }
+      ]
+    },
+
+    "shop": {
+      "title": "選物 Lifestyle Shop ｜ 睿嶼文化 RUIYU STUDIO",
+      "description": "睿嶼選物 ── 精選讓生活更有溫度的日常器物、沖煮道具與選品。",
+      "blocks": [
+        { "type": "banner",
+          "bg_image": "https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=1600&q=80",
+          "eyebrow": "生活選品 Lifestyle Shop",
+          "heading": "把美好，帶回日常",
+          "subtext": "精選讓生活更有溫度的日常器物。"
+        },
+        { "type": "product_grid" }
       ]
     },
 

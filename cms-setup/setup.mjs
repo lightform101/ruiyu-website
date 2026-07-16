@@ -82,6 +82,17 @@ async function main() {
     { name: 'results', type: 'json', maxSize: 200000 },
   ], PUBLIC);
 
+  // 商品（選物商店）
+  await ensureCollection('products', [
+    { name: 'sort', type: 'number' },
+    { name: 'active', type: 'bool' },
+    { name: 'name', type: 'text', required: true },
+    { name: 'price', type: 'number' },
+    { name: 'category', type: 'text' },
+    { name: 'description', type: 'text' },
+    { name: 'image', type: 'text' },
+  ], PUBLIC);
+
   // 圖片上傳用（後台上傳圖片存這裡，前台用其公開網址）
   await ensureCollection('media', [
     { name: 'file', type: 'file', maxSelect: 1, maxSize: 5242880 },
@@ -107,7 +118,7 @@ async function ensureCollection(name, fields, rules = {}) {
 }
 
 async function resetCollections() {
-  for (const name of ['blocks', 'pages', 'settings', 'services', 'articles', 'flavor_quiz', 'media']) {
+  for (const name of ['blocks', 'pages', 'settings', 'services', 'articles', 'flavor_quiz', 'products', 'media']) {
     try { await pb.collections.delete(name); console.log(`  － 刪除舊 ${name}`); } catch {}
   }
 }
@@ -142,6 +153,12 @@ async function seedIfEmpty() {
     for (const a of content.articles) await pb.collection('articles').create({ sort: i++, ...a });
     console.log('  ＋ 灌入 articles（' + content.articles.length + '）');
   } else console.log('  · articles 已有資料，略過');
+
+  if (await count('products') === 0 && content.products) {
+    let i = 0;
+    for (const p of content.products) await pb.collection('products').create({ sort: i++, active: true, ...p });
+    console.log('  ＋ 灌入 products（' + content.products.length + '）');
+  } else console.log('  · products 已有資料或無種子，略過');
 
   if (await count('pages') === 0) {
     for (const [slug, page] of Object.entries(content.pages)) {

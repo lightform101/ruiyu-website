@@ -6,7 +6,7 @@
   const PB = 'https://ruiyu-cms.zeabur.app';
 
   let token = localStorage.getItem('ruiyu_pb_token') || '';
-  const state = { settings: null, quiz: null, services: [], articles: [] };
+  const state = { settings: null, quiz: null, services: [], articles: [], products: [] };
 
   // ---------- 小工具 ----------
   const $ = (s, r = document) => r.querySelector(s);
@@ -52,16 +52,18 @@
 
   // ---------- 載入資料 ----------
   async function loadAll() {
-    const [s, q, sv, ar] = await Promise.all([
+    const [s, q, sv, ar, pr] = await Promise.all([
       pb('/api/collections/settings/records?perPage=1'),
       pb('/api/collections/flavor_quiz/records?perPage=1'),
       pb('/api/collections/services/records?perPage=200&sort=sort'),
       pb('/api/collections/articles/records?perPage=200&sort=sort'),
+      pb('/api/collections/products/records?perPage=200&sort=sort'),
     ]);
     state.settings = s.items[0] || null;
     state.quiz = q.items[0] || null;
     state.services = sv.items;
     state.articles = ar.items;
+    state.products = pr.items;
   }
 
   // ---------- 通用元件 ----------
@@ -113,6 +115,7 @@
   // ---------- 分頁 ----------
   const TABS = [
     { id: 'settings', label: '網站設定', render: renderSettings },
+    { id: 'products', label: '商品', render: renderProducts },
     { id: 'services', label: '服務項目', render: renderServices },
     { id: 'articles', label: '文章', render: renderArticles },
     { id: 'quiz', label: '風味測驗', render: renderQuiz },
@@ -262,6 +265,65 @@
     state.services.forEach((sv) => list.appendChild(serviceCard(sv)));
     const add = node('<button class="btn btn-line">＋ 新增服務</button>');
     add.addEventListener('click', () => { const c = serviceCard({ sort: state.services.length }); list.appendChild(c); c.scrollIntoView({ behavior: 'smooth' }); });
+    view.appendChild(add);
+  }
+
+  // ---------- 商品 ----------
+  function productCard(p) {
+    p = p || {};
+    const card = node('<div class="card"></div>');
+    card.dataset.id = p.id || '';
+    appendHTML(card, `
+      <div class="row2">
+        <div class="field"><label>商品名稱</label><input type="text" class="f_name"></div>
+        <div class="field"><label>價格（數字，NT$）</label><input type="text" class="f_price"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>分類</label><input type="text" class="f_cat" placeholder="沖煮道具"></div>
+        <div class="field"><label>排序</label><input type="text" class="f_sort" style="max-width:120px"></div>
+      </div>
+      <div class="field"><label>商品說明</label><textarea class="f_desc"></textarea></div>
+      <div class="field"><label><input type="checkbox" class="f_active" style="width:auto;vertical-align:middle;margin-right:6px">上架中（打勾才會顯示在商店）</label></div>`);
+    $('.f_name', card).value = p.name || ''; $('.f_price', card).value = p.price ?? '';
+    $('.f_cat', card).value = p.category || ''; $('.f_sort', card).value = p.sort ?? '';
+    $('.f_desc', card).value = p.description || ''; $('.f_active', card).checked = p.active !== false;
+
+    card.appendChild(node('<div class="mini">商品圖片</div>'));
+    const pic = imagePicker(p.image); card.appendChild(pic.wrap);
+
+    const bar = node('<div class="bar" style="margin-top:16px"></div>');
+    const save = node('<button class="btn btn-sm">儲存</button>');
+    const del = node('<button class="btn btn-danger btn-sm">刪除</button>');
+    save.addEventListener('click', async () => {
+      save.disabled = true;
+      try {
+        const body = {
+          name: $('.f_name', card).value.trim(), price: Number($('.f_price', card).value) || 0,
+          category: $('.f_cat', card).value.trim(), sort: Number($('.f_sort', card).value) || 0,
+          description: $('.f_desc', card).value.trim(), active: $('.f_active', card).checked, image: pic.get(),
+        };
+        if (!body.name) { toast('請填商品名稱', true); save.disabled = false; return; }
+        if (card.dataset.id) await pb(`/api/collections/products/records/${card.dataset.id}`, { method: 'PATCH', body });
+        else { const d = await pb('/api/collections/products/records', { method: 'POST', body }); card.dataset.id = d.id; }
+        toast('商品已儲存 ✓');
+      } catch (e) { toast('失敗：' + e.message, true); }
+      save.disabled = false;
+    });
+    del.addEventListener('click', async () => {
+      if (!confirm('確定刪除這個商品？')) return;
+      try { if (card.dataset.id) await pb(`/api/collections/products/records/${card.dataset.id}`, { method: 'DELETE' }); card.remove(); toast('已刪除'); }
+      catch (e) { toast('刪除失敗：' + e.message, true); }
+    });
+    bar.appendChild(save); bar.appendChild(del); card.appendChild(bar);
+    return card;
+  }
+  function renderProducts(view) {
+    view.appendChild(node('<div class="sec-title">商品（選物商店）</div>'));
+    view.appendChild(node('<div class="sec-desc">在「選物」商品頁販售的商品。每個商品一張卡片，各自「儲存」。</div>'));
+    const list = node('<div></div>'); view.appendChild(list);
+    state.products.forEach((p) => list.appendChild(productCard(p)));
+    const add = node('<button class="btn btn-line">＋ 新增商品</button>');
+    add.addEventListener('click', () => { const c = productCard({ sort: state.products.length, active: true }); list.appendChild(c); c.scrollIntoView({ behavior: 'smooth' }); });
     view.appendChild(add);
   }
 

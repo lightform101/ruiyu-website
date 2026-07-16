@@ -176,6 +176,25 @@
       return `<section><div class="wrap"><div class="posts">${posts}</div></div></section>`;
     },
 
+    product_grid() {
+      const list = ((window.RUIYU && window.RUIYU.products) || []).filter((p) => p.active !== false);
+      if (!list.length) return '<section><div class="wrap"><p class="empty-shop">商品即將上架，敬請期待 ☕</p></div></section>';
+      const cards = list.map((p) => `
+        <div class="product-card reveal">
+          <div class="ph" style="background-image:${cssUrl(p.image)}"></div>
+          <div class="pbody">
+            ${p.category ? `<span class="pcat">${esc(p.category)}</span>` : ''}
+            <h3 class="serif">${esc(p.name)}</h3>
+            ${p.description ? `<p>${nl2br(p.description)}</p>` : ''}
+            <div class="pfoot">
+              <span class="price">NT$ ${Number(p.price || 0).toLocaleString()}</span>
+              <button class="btn btn-sm add-cart" data-key="${esc(p.id || p.name)}">加入購物車</button>
+            </div>
+          </div>
+        </div>`).join('');
+      return `<section><div class="wrap"><div class="products-grid">${cards}</div></div></section>`;
+    },
+
     cta(b) {
       const eyebrow = b.eyebrow ? `<span class="eyebrow" style="justify-content:center;display:inline-flex">${esc(b.eyebrow)}</span>` : '';
       const btns = (b.buttons && b.buttons.length)
@@ -355,11 +374,12 @@
       if (!r.ok) throw new Error(path + ' ' + r.status);
       return (await r.json()).items || [];
     };
-    const [settingsArr, quizArr, services, articles, pages, blocks] = await Promise.all([
+    const [settingsArr, quizArr, services, articles, products, pages, blocks] = await Promise.all([
       items('/settings/records?perPage=1'),
       items('/flavor_quiz/records?perPage=1'),
       items('/services/records?perPage=200&sort=sort'),
       items('/articles/records?perPage=200&sort=sort'),
+      items('/products/records?perPage=200&sort=sort'),
       items('/pages/records?perPage=200'),
       items('/blocks/records?perPage=500&sort=sort'),
     ]);
@@ -385,7 +405,7 @@
       p.blocks = p.blocks.map((b) => Object.assign({ type: b.type }, b.data || {}));
     });
 
-    return { settings, flavor_quiz: quizArr[0] || {}, services, articles, pages: pagesObj };
+    return { settings, flavor_quiz: quizArr[0] || {}, services, articles, products, pages: pagesObj };
   }
 
   // ---------- 主流程 ----------
@@ -433,6 +453,14 @@
     // 依區塊掛載對應模組
     if (blocks.some((b) => b.type === 'quiz') && typeof window.initQuiz === 'function') window.initQuiz();
     if (blocks.some((b) => b.type === 'contact') && typeof window.initContact === 'function') window.initContact();
+
+    // 購物車（全站可用；商品資料供加入購物車查找）
+    if (window.RuiyuCart) {
+      window.RuiyuCart.init(data.products || []);
+      document.querySelectorAll('.add-cart').forEach((btn) => {
+        btn.addEventListener('click', () => window.RuiyuCart.addByKey(btn.dataset.key));
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
