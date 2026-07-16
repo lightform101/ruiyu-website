@@ -1,0 +1,9 @@
+{
+  "name": "ruiyu-cms-setup",
+  "private": true,
+  "type": "module",
+  "description": "一次性腳本：在 PocketBase 建立睿嶼 CMS 的資料模型並灌入內容",
+  "dependencies": {
+    "pocketbase": "^0.27.0"
+  }
+}

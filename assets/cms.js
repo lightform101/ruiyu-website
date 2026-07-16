@@ -1,15 +1,14 @@
 /* ============================================================
    睿嶼 — 內容渲染引擎（CMS engine）
    讀取內容資料 → 套用主題色 → 渲染 Header / 區塊 / Footer
-   資料來源：目前用打包在站內的 content/content.json（模擬 Directus 回傳）。
-   之後接 Directus 時，把 CMS_API 設成 Directus 網址即可（見 loadContent）。
+   資料來源：PocketBase（CMS_API）。若讀取失敗，退回站內打包的
+   content/content.json 當保底，網站不會開天窗。
    ============================================================ */
 (function () {
   'use strict';
 
-  // 之後接 Directus：填入 Directus 公開網址（例如 'https://ruiyu-cms.zeabur.app'）。
-  // 留空 = 使用站內打包的 content/content.json。
-  const CMS_API = '';
+  // PocketBase 後台的公開網址。留空 = 只用站內打包的 content/content.json。
+  const CMS_API = 'https://ruiyu-cms.zeabur.app';
 
   // ---------- 小工具 ----------
   const esc = (s) => String(s == null ? '' : s)
@@ -334,12 +333,59 @@
 
   // ---------- 載入資料 ----------
   async function loadContent() {
-    // 之後接 Directus：若 CMS_API 有設，改用 Directus 適配器（fetchFromDirectus），失敗則退回打包 JSON。
-    // 目前 CMS_API 為空，直接用站內 content.json。
+    // 若 CMS_API 有設，改用 PocketBase；失敗則退回站內打包的 content.json（保底不開天窗）。
+    if (CMS_API) {
+      try {
+        return await loadFromPocketBase(CMS_API);
+      } catch (e) {
+        console.warn('[CMS] PocketBase 讀取失敗，改用打包 content.json：', e);
+      }
+    }
     return fetch('content/content.json', { cache: 'no-cache' }).then((r) => {
       if (!r.ok) throw new Error('content.json ' + r.status);
       return r.json();
     });
+  }
+
+  // 從 PocketBase 讀取並組回與 content.json 相同的結構
+  async function loadFromPocketBase(base) {
+    const api = base.replace(/\/+$/, '') + '/api/collections';
+    const items = async (path) => {
+      const r = await fetch(api + path, { cache: 'no-cache' });
+      if (!r.ok) throw new Error(path + ' ' + r.status);
+      return (await r.json()).items || [];
+    };
+    const [settingsArr, quizArr, services, articles, pages, blocks] = await Promise.all([
+      items('/settings/records?perPage=1'),
+      items('/flavor_quiz/records?perPage=1'),
+      items('/services/records?perPage=200&sort=sort'),
+      items('/articles/records?perPage=200&sort=sort'),
+      items('/pages/records?perPage=200'),
+      items('/blocks/records?perPage=500&sort=sort'),
+    ]);
+
+    const s = settingsArr[0] || {};
+    const settings = {
+      brand_zh: s.brand_zh, brand_en: s.brand_en,
+      theme: s.theme, nav: s.nav, footer: s.footer,
+    };
+
+    const idToSlug = {};
+    const pagesObj = {};
+    pages.forEach((p) => {
+      idToSlug[p.id] = p.slug;
+      pagesObj[p.slug] = { title: p.title, description: p.description, blocks: [] };
+    });
+    blocks.forEach((b) => {
+      const slug = idToSlug[b.page];
+      if (pagesObj[slug]) pagesObj[slug].blocks.push(b);
+    });
+    Object.values(pagesObj).forEach((p) => {
+      p.blocks.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+      p.blocks = p.blocks.map((b) => Object.assign({ type: b.type }, b.data || {}));
+    });
+
+    return { settings, flavor_quiz: quizArr[0] || {}, services, articles, pages: pagesObj };
   }
 
   // ---------- 主流程 ----------
