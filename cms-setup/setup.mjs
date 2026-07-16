@@ -82,6 +82,12 @@ async function main() {
     { name: 'results', type: 'json', maxSize: 200000 },
   ], PUBLIC);
 
+  // 圖片上傳用（後台上傳圖片存這裡，前台用其公開網址）
+  await ensureCollection('media', [
+    { name: 'file', type: 'file', maxSelect: 1, maxSize: 5242880 },
+    { name: 'alt', type: 'text' },
+  ], PUBLIC);
+
   console.log('✓ collections 就緒');
 
   await seedIfEmpty();
@@ -101,7 +107,7 @@ async function ensureCollection(name, fields, rules = {}) {
 }
 
 async function resetCollections() {
-  for (const name of ['blocks', 'pages', 'settings', 'services', 'articles', 'flavor_quiz']) {
+  for (const name of ['blocks', 'pages', 'settings', 'services', 'articles', 'flavor_quiz', 'media']) {
     try { await pb.collections.delete(name); console.log(`  － 刪除舊 ${name}`); } catch {}
   }
 }
