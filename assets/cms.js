@@ -179,12 +179,21 @@
     product_grid() {
       const list = ((window.RUIYU && window.RUIYU.products) || []).filter((p) => p.active !== false);
       if (!list.length) return '<section><div class="wrap"><p class="empty-shop">商品即將上架，敬請期待 ☕</p></div></section>';
-      // 列表只顯示：圖片 + 名稱，點進去看完整資訊
-      const cards = list.map((p) => `
-        <a class="product-card reveal" href="product.html?id=${encodeURIComponent(p.id || p.name)}">
-          <div class="ph" style="background-image:${cssUrl(p.image)}"></div>
-          <div class="pbody"><h3 class="serif">${esc(p.name)}</h3></div>
-        </a>`).join('');
+      // 列表：圖片＋名稱可點進詳情；價格與加入購物車直接顯示在卡片上
+      const cards = list.map((p) => {
+        const key = esc(p.id || p.name);
+        return `
+        <div class="product-card reveal">
+          <a class="pcard-link" href="product.html?id=${encodeURIComponent(p.id || p.name)}">
+            <div class="ph" style="background-image:${cssUrl(p.image)}"></div>
+            <div class="pbody"><h3 class="serif">${esc(p.name)}</h3></div>
+          </a>
+          <div class="pfoot">
+            <span class="price">NT$ ${Number(p.price || 0).toLocaleString()}</span>
+            <button class="btn btn-sm add-cart" data-key="${key}">加入購物車</button>
+          </div>
+        </div>`;
+      }).join('');
       return `<section><div class="wrap"><div class="products-grid">${cards}</div></div></section>`;
     },
 

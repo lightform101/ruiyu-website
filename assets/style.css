@@ -228,13 +228,16 @@ footer{background:#2c2823;color:#a89f92;padding:70px 0 40px}
 
 /* ---------- 選物商店 Products ---------- */
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-/* 列表卡片：只顯示 圖片 + 名稱，整張可點進商品頁 */
-.product-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.4s;display:block;text-decoration:none;color:inherit}
+/* 列表卡片：圖片＋名稱可點進詳情；價格與加入購物車直接在卡片上 */
+.product-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.4s;display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(56,51,46,.1)}
 .product-card:hover h3{color:var(--latte-d)}
+.pcard-link{text-decoration:none;color:inherit;display:block}
 .product-card .ph{width:100%;height:0;padding-bottom:100%;background:center/cover var(--paper)}
-.product-card .pbody{padding:20px 18px 24px;text-align:center}
+.product-card .pbody{padding:18px 18px 8px;text-align:center}
 .product-card h3{font-size:1.1rem;line-height:1.6;transition:.3s}
+.product-card .pfoot{margin-top:auto;padding:6px 18px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.product-card .price{font-family:'Noto Serif TC',serif;font-size:1.25rem;color:var(--charcoal)}
 .empty-shop{text-align:center;color:var(--gray);padding:40px 0}
 
 /* ---------- 商品詳情頁 ---------- */
