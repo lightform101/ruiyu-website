@@ -160,17 +160,23 @@ async function seedIfEmpty() {
     console.log('  ＋ 灌入 products（' + content.products.length + '）');
   } else console.log('  · products 已有資料或無種子，略過');
 
-  if (await count('pages') === 0) {
+  // 逐頁檢查：只新增「還不存在」的頁面（含其區塊），不動已存在的頁面
+  {
+    const existing = new Set((await pb.collection('pages').getFullList()).map((p) => p.slug));
+    let added = 0;
     for (const [slug, page] of Object.entries(content.pages)) {
+      if (existing.has(slug)) continue;
       const rec = await pb.collection('pages').create({ slug, title: page.title, description: page.description, sort: 0 });
       let b = 0;
       for (const block of page.blocks) {
         const { type, ...data } = block;
         await pb.collection('blocks').create({ page: rec.id, sort: b++, type, data });
       }
+      added++;
+      console.log(`  ＋ 新增頁面 ${slug}（${page.blocks.length} 區塊）`);
     }
-    console.log('  ＋ 灌入 pages + blocks');
-  } else console.log('  · pages 已有資料，略過');
+    if (!added) console.log('  · pages 皆已存在，略過');
+  }
 }
 
 main().catch((e) => {
