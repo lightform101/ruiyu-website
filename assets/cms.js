@@ -179,19 +179,12 @@
     product_grid() {
       const list = ((window.RUIYU && window.RUIYU.products) || []).filter((p) => p.active !== false);
       if (!list.length) return '<section><div class="wrap"><p class="empty-shop">商品即將上架，敬請期待 ☕</p></div></section>';
+      // 列表只顯示：圖片 + 名稱，點進去看完整資訊
       const cards = list.map((p) => `
-        <div class="product-card reveal">
+        <a class="product-card reveal" href="product.html?id=${encodeURIComponent(p.id || p.name)}">
           <div class="ph" style="background-image:${cssUrl(p.image)}"></div>
-          <div class="pbody">
-            ${p.category ? `<span class="pcat">${esc(p.category)}</span>` : ''}
-            <h3 class="serif">${esc(p.name)}</h3>
-            ${p.description ? `<p>${nl2br(p.description)}</p>` : ''}
-            <div class="pfoot">
-              <span class="price">NT$ ${Number(p.price || 0).toLocaleString()}</span>
-              <button class="btn btn-sm add-cart" data-key="${esc(p.id || p.name)}">加入購物車</button>
-            </div>
-          </div>
-        </div>`).join('');
+          <div class="pbody"><h3 class="serif">${esc(p.name)}</h3></div>
+        </a>`).join('');
       return `<section><div class="wrap"><div class="products-grid">${cards}</div></div></section>`;
     },
 
@@ -409,6 +402,33 @@
   }
 
   // ---------- 主流程 ----------
+  // 商品詳情頁：依網址 ?id= 找商品，顯示大圖、價格、說明、加入購物車
+  function renderProductDetail(app, data) {
+    const key = new URLSearchParams(location.search).get('id');
+    const p = (data.products || []).filter((x) => x.active !== false).find((x) => String(x.id || x.name) === key);
+    if (!p) {
+      app.innerHTML = '<section class="product-detail"><div class="wrap"><p class="empty-shop">找不到這個商品，可能已下架。<br><a href="shop.html">← 回生活選品</a></p></div></section>';
+      return;
+    }
+    document.title = p.name + ' ｜ 睿嶼文化 RUIYU STUDIO';
+    app.innerHTML = `
+      <section class="product-detail">
+        <div class="wrap">
+          <a class="pd-back" href="shop.html">← 回生活選品</a>
+          <div class="pd-grid">
+            <div class="pd-img reveal" style="background-image:${cssUrl(p.image)}"></div>
+            <div class="pd-info reveal">
+              ${p.category ? `<span class="pcat">${esc(p.category)}</span>` : ''}
+              <h1 class="serif">${esc(p.name)}</h1>
+              <div class="pd-price">NT$ ${Number(p.price || 0).toLocaleString()}</div>
+              ${p.description ? `<div class="pd-desc">${nl2br(p.description)}</div>` : ''}
+              <button class="btn add-cart" data-key="${esc(p.id || p.name)}">加入購物車</button>
+            </div>
+          </div>
+        </div>
+      </section>`;
+  }
+
   async function boot() {
     const app = document.getElementById('app');
     const slug = (app && app.dataset.page) || 'home';
@@ -441,11 +461,15 @@
 
     const blocks = page.blocks || [];
     if (app) {
-      app.innerHTML = blocks.map((b) => {
-        const fn = BLOCKS[b.type];
-        if (!fn) { console.warn('[CMS] 未知區塊類型:', b.type); return ''; }
-        return fn(b, data);
-      }).join('');
+      if (slug === 'product') {
+        renderProductDetail(app, data);
+      } else {
+        app.innerHTML = blocks.map((b) => {
+          const fn = BLOCKS[b.type];
+          if (!fn) { console.warn('[CMS] 未知區塊類型:', b.type); return ''; }
+          return fn(b, data);
+        }).join('');
+      }
     }
 
     initInteractions();

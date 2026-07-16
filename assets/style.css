@@ -228,16 +228,27 @@ footer{background:#2c2823;color:#a89f92;padding:70px 0 40px}
 
 /* ---------- 選物商店 Products ---------- */
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
-.product-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.4s;display:flex;flex-direction:column}
+/* 列表卡片：只顯示 圖片 + 名稱，整張可點進商品頁 */
+.product-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.4s;display:block;text-decoration:none;color:inherit}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(56,51,46,.1)}
+.product-card:hover h3{color:var(--latte-d)}
 .product-card .ph{width:100%;height:0;padding-bottom:100%;background:center/cover var(--paper)}
-.product-card .pbody{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
-.product-card .pcat{font-size:.7rem;letter-spacing:.16em;color:var(--latte-d);text-transform:uppercase}
-.product-card h3{font-size:1.15rem;margin:8px 0 10px}
-.product-card p{color:var(--gray);font-size:.85rem;line-height:1.9;margin-bottom:16px}
-.product-card .pfoot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.product-card .price{font-family:'Noto Serif TC',serif;font-size:1.2rem;color:var(--charcoal)}
+.product-card .pbody{padding:20px 18px 24px;text-align:center}
+.product-card h3{font-size:1.1rem;line-height:1.6;transition:.3s}
 .empty-shop{text-align:center;color:var(--gray);padding:40px 0}
+
+/* ---------- 商品詳情頁 ---------- */
+.product-detail{padding:130px 0 100px}
+.pd-back{display:inline-block;color:var(--gray);text-decoration:none;font-size:.86rem;margin-bottom:28px;letter-spacing:.04em}
+.pd-back:hover{color:var(--latte-d)}
+.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.pd-img{width:100%;height:0;padding-bottom:100%;background:center/cover var(--paper);border-radius:4px}
+.pd-info .pcat{font-size:.72rem;letter-spacing:.16em;color:var(--latte-d);text-transform:uppercase}
+.pd-info h1{font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.5;margin:10px 0 16px}
+.pd-price{font-family:'Noto Serif TC',serif;font-size:1.6rem;color:var(--charcoal);margin-bottom:24px}
+.pd-desc{color:var(--ink);font-size:.96rem;line-height:2.1;margin-bottom:32px;white-space:pre-line}
+.pd-info .add-cart{min-width:180px;text-align:center}
+@media(max-width:820px){.pd-grid{grid-template-columns:1fr;gap:28px}.product-detail{padding:100px 0 80px}}
 
 /* ---------- 購物車 Cart ---------- */
 .cart-fab{position:fixed;right:22px;bottom:22px;z-index:60;background:var(--charcoal);color:#fff;border:0;border-radius:50px;
